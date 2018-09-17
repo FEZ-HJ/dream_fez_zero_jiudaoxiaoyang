@@ -1,0 +1,35 @@
+.chunk{
+  /* 行内元素 */
+  /* display: inline-block; */
+  width: 150px;
+  height: 100px;
+}
+
+.container-flex{
+  display: flex;
+  /* 排列方向 row水平 column竖直 */
+  flex-direction: row-reverse;
+  /* 排版 主轴*/
+  /* justify-content: flex-start; */
+  justify-content: center;
+  /* 交叉轴 */
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 400px;
+  background-color: #999999;
+}
+
+.color1{
+  background-color: brown;
+  font-size: 26px;
+}
+
+.color2{
+  background-color: aqua;
+    font-size: 20;
+}
+
+.color3{
+  background-color: blue;
+  font-size: 14px;
+}
