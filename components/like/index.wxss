@@ -1,7 +1,9 @@
 /* components/like/index.wxss */
 .v-container{
-  
-  
+  /* background-color: blue; */
+  display: inline-flex;
+  flex-direction: row;
+  padding: 10rpx;
 }
 
 .v-container image{
@@ -12,6 +14,10 @@
 
 .v-container text{
   /* font-family: "PingFangSC-Thin"; */
-  /* font-size: 48rpx; */
+  font-size: 24rpx;
+  line-height: 24rpx;
   color: #bbbbbb;
+  position: relative;
+  bottom: 10rpx;
+  left: 6rpx;
 }
