@@ -1,7 +1,6 @@
 /* components/like/index.wxss */
 .v-container{
   
-  /* rpx */
 }
 
 .v-container image{
