@@ -1,11 +1,7 @@
 Component({
   properties:{
     like:{
-      type: Boolean,
-      value:false,
-      observer:function(){
-
-      }
+      type: Boolean
     },
     count:{
       type:Number
@@ -14,8 +10,8 @@ Component({
   },
 
   data:{
-    yesSrc: '../images/like.png',
-    noSrc: '../images/like@dis.png',
+    yesSrc: 'images/like.png',
+    noSrc: 'images/like@dis.png',
   },
 
   methods:{
@@ -28,6 +24,13 @@ Component({
         count: count,
         like: like
       })
+
+      // 自定义事件
+      let behavior = this.properties.like ? 'like' : 'cancel'
+      // 激活
+      this.triggerEvent('like',{
+        behavior: behavior
+      },{})
     }
   }
 })

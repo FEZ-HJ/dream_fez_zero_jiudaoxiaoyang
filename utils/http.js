@@ -18,9 +18,9 @@ export class HTTP{
       success:(res) => {
         let code = res.statusCode.toString()
         if(code.startsWith('2')){
-
+          params.success && params.success(res.data)
         }else{
-          params.success(res)
+          params.success(res.data)
           this._show_error(res.data.error_code)
         }
       },
