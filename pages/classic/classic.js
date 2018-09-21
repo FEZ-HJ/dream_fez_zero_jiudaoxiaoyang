@@ -10,6 +10,8 @@ Page({
    */
   data: {
     classic: null,
+    latest: true,
+    first: false
   },
 
   /**
@@ -28,7 +30,7 @@ Page({
           "index": 7,
           "like_status": 0,
           "pubdate": "2018-06-22",
-          "title": "李安<<饮食男女>>",
+          "title": "李安《饮食男女》",
           "type": 100
         }
       })
@@ -39,6 +41,14 @@ Page({
     console.log(event)
     let behavior = event.detail.behavior
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
+  },
+
+  onLeft: function(event){
+    console.log(event)
+  },
+
+  onRight: function(evnet){
+
   },
 
   /**
