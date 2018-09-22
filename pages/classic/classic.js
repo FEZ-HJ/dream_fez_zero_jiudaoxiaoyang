@@ -11,7 +11,9 @@ Page({
   data: {
     classic: null,
     latest: true,
-    first: false
+    first: false,
+    likeCount : 0,
+    likeStatus: false
   },
 
   /**
@@ -27,12 +29,14 @@ Page({
           "fav_nums": 0,
           "id": 1,
           "image": "http://bl.7yue.pro/images/movie.8.png",
-          "index": 7,
+          "index": 2,
           "like_status": 0,
           "pubdate": "2018-06-22",
           "title": "李安《饮食男女》",
           "type": 100
-        }
+        },
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
       })
     })
   },
@@ -43,12 +47,60 @@ Page({
     likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
   },
 
-  onLeft: function(event){
-    console.log(event)
+  onNext: function(event){
+    let index = this.data.classic.index
+    classicModel.getClassic(index,'next', (res)=>{
+      this._getLikeStatus(res.id, res.type)
+      this.setData({
+        classic: {
+          "content": "这个夏天又是一个毕业季",
+          "fav_nums": 0,
+          "id": 2,
+          "image": "http://bl.7yue.pro/images/sentence.2.png",
+          "index": 2,
+          "like_status": 0,
+          "pubdate": "2018-06-22",
+          "title": "未名",
+          "type": 300
+        },
+        latest: classicModel.isLatest(2),
+        first: classicModel.isFirst(2)
+      })
+    })
   },
 
-  onRight: function(evnet){
+  onPrevious: function(evnet){
+    let index = this.data.classic.index
+    classicModel.getClassic(index,'previous', (res) =>{
+      this._getLikeStatus(res.id,res.type)
+      this.setData({
+        classic: {
+          "content": "你陪我步入蝉夏 越过城市喧嚣",
+          "fav_nums": 0,
+          "image": "http://bl.7yue.pro/images/music.7.png",
+          "id": 3,
+          "index": 1,
+          "like_status": 0,
+          "pubdate": "2018-06-22",
+          "title": "纸短情长",
+          "type": 200,
+          "url": "http://music.163.com/song/media/outer/url?id=557581284.mp3"
+        },
+        latest: classicModel.isLatest(1),
+        first:classicModel.isFirst(1)
+        // first:classicModel.isFirst(res.index)
+        // latest: classicModel.isLatest(res.index)
+      })
+    })
+  },
 
+  _getLikeStatus:function(artID,category){
+    likeModel.getClassicLikeStatus(artID,category,(res)=>{
+      this.setData({
+        likeStatus: res.like_status,
+        likeCount: res.fav_nums
+      })
+    })
   },
 
   /**

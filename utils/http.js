@@ -25,6 +25,7 @@ export class HTTP{
         }
       },
       fail:(err) => {
+        console.log(err)
         this._show_error(1)
       }
     })
